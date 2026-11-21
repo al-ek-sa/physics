@@ -1,0 +1,15 @@
+services:
+  backend:
+    build: ./backend
+    container_name: motion-blur-backend
+    restart: unless-stopped
+    expose:
+      - "8000"
+  frontend:
+    build: ./frontend
+    container_name: motion-blur-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
